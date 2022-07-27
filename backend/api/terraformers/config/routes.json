@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/terraformers",
+      "handler": "terraformers.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/terraformers/count",
+      "handler": "terraformers.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/terraformers/:id",
+      "handler": "terraformers.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/terraformers",
+      "handler": "terraformers.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/terraformers/:id",
+      "handler": "terraformers.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/terraformers/:id",
+      "handler": "terraformers.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

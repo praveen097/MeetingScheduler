@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "terraformers",
+  "info": {
+    "name": "Terraformers",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tId": {
+      "type": "uid",
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": false
+    },
+    "password": {
+      "type": "password",
+      "required": true
+    },
+    "dateOfBirth": {
+      "type": "date",
+      "required": true
+    },
+    "mobile": {
+      "type": "biginteger",
+      "required": true,
+      "unique": false
+    },
+    "credential": {
+      "model": "credentials",
+      "via": "terraformer"
+    }
+  }
+}
