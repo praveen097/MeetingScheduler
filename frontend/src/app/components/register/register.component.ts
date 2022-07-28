@@ -27,12 +27,10 @@ export class RegisterComponent implements OnInit {
     this._meetingSchedulerService
       .registerTerraformers(this.userCredentialModel)
       .subscribe((result) => {
-        console.log(result);
         this.array = JSON.parse(JSON.stringify(result));
         if (this.array['status'] == 'success') {
           this._route.navigate(['']);
         } else {
-          console.log(result);
         }
       });
   }

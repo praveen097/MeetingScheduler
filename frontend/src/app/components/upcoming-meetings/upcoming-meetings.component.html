@@ -1,1 +1,14 @@
 <p>upcoming-meetings works!</p>
+<div>
+    <h4 *ngFor="let meeting of upcomingMeetings">
+        <div class="contentHolder">
+            <div class="titleHolder">
+                <p class="title">{{meeting.title}}</p>
+                <p class="organizer">{{meeting.organizer}}</p>
+                {{meeting.agenda}}  {{meeting.guestName}} {{meeting.timings}} {{meeting.id}}
+                <mat-icon (click) = "editMeeting(meeting.id)">edit</mat-icon>
+                <mat-icon>delete</mat-icon>
+            </div>
+        </div>
+    </h4>
+</div>

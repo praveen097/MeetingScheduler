@@ -13,7 +13,8 @@ import { ScheduleMeetingComponent } from './components/schedule-meeting/schedule
 import { UpcomingMeetingsComponent } from './components/upcoming-meetings/upcoming-meetings.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { EditMeetingComponent } from './components/edit-meeting/edit-meeting.component';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,8 @@ import { EditMeetingComponent } from './components/edit-meeting/edit-meeting.com
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    MatExpansionModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

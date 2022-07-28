@@ -14,31 +14,27 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "agenda": {
       "type": "string",
-      "required": true
+      "required": false
     },
-    "startTime": {
+    "timings": {
       "type": "datetime",
-      "required": true
-    },
-    "endTime": {
-      "type": "datetime",
-      "required": true
+      "required": false
     },
     "guestName": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "organizer": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "organizerId": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "guestId": {
       "type": "string"

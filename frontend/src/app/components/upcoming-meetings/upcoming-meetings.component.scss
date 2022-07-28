@@ -1,0 +1,19 @@
+.titleHolder{
+    width: 90%;
+    border: 1px solid red;
+}
+.title{
+    float: left;
+}
+
+.organizer{
+    float: right;
+}
+
+.contentHolder{
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
