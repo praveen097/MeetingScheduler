@@ -5,4 +5,18 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+    
+    async create(terraformers) {
+        let dataSubmitted = {
+            name: terraformers.request.body.name,
+            email: terraformers.request.body.email,
+            password: terraformers.request.body.password,
+            dateOfBirth: terraformers.request.body.dateOfBirth,
+            mobile: terraformers.request.body.mobile,
+
+          };
+        await strapi.services.terraformers.create(dataSubmitted);
+        return {status : "success", message : "data added successfully"};
+    }
+};

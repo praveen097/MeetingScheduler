@@ -12,10 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "tId": {
-      "type": "uid",
-      "required": true
-    },
     "name": {
       "type": "string"
     },
@@ -36,10 +32,6 @@
       "type": "biginteger",
       "required": true,
       "unique": false
-    },
-    "credential": {
-      "model": "credentials",
-      "via": "terraformer"
     }
   }
 }
