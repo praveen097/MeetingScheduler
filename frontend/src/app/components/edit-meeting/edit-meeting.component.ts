@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Meeting } from 'src/app/models/meeting';
 import { MeetingSchedulerService } from 'src/app/service/meeting-scheduler.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-edit-meeting',
@@ -12,7 +13,7 @@ export class EditMeetingComponent implements OnInit {
   userCredentialModel = new Meeting();
   oneTimePassword: number = 0;
   captcha: string = '';
-  array: any = [];
+  array: any[] = [];
   guestDetails:any;
   meetingId:string = ''
 
@@ -68,6 +69,30 @@ export class EditMeetingComponent implements OnInit {
   public getGuestId() {
     this.setGuestId();
   }
+  public checkUsersAvailable() {
+    this.array = [];
+    for (let i = 0; i < this.guestDetails.length; i++) {
+      const element = this.guestDetails[i];
+      if (element.fullName == this.userCredentialModel.guestName) {
+        this.userCredentialModel.guestId = element.id;
+      }
+
+      if (
+        (moment(this.userCredentialModel.timings).isAfter(
+          element.hoursOffStartTime
+        ) &&
+          moment(this.userCredentialModel.timings).isBefore(
+            element.hoursOffEndTime
+          )) ||
+        element.id == this.userCredentialModel.organizerId
+      ) {
+
+      } else {
+        this.array.push(element);
+      }
+    }
+  }
+
 
 
 }

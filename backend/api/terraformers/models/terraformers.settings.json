@@ -31,6 +31,12 @@
     "password": {
       "type": "string",
       "required": true
+    },
+    "hoursOffStartTime": {
+      "type": "datetime"
+    },
+    "hoursOffEndTime": {
+      "type": "datetime"
     }
   }
 }

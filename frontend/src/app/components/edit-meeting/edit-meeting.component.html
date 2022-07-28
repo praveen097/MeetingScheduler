@@ -47,6 +47,7 @@
       <div class="form-group">
         <label for="startTime">Date & Time</label>
         <input
+        (change)="checkUsersAvailable()"
           type="datetime-local"
           [(ngModel)]="userCredentialModel.timings"
           name="startTime"
@@ -65,7 +66,7 @@
           (change)="getGuestId()"
         >
           <option
-            *ngFor="let dir of guestDetails"
+            *ngFor="let dir of array"
             [value]="dir.fullName"
           >
             {{ dir.fullName }}

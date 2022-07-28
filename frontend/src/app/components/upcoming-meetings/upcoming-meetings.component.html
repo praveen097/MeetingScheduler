@@ -7,7 +7,7 @@
                 <p class="organizer">{{meeting.organizer}}</p>
                 {{meeting.agenda}}  {{meeting.guestName}} {{meeting.timings}} {{meeting.id}}
                 <mat-icon (click) = "editMeeting(meeting.id)">edit</mat-icon>
-                <mat-icon>delete</mat-icon>
+                <mat-icon (click) = "deleteMeeting(meeting.id)">delete</mat-icon>
             </div>
         </div>
     </h4>

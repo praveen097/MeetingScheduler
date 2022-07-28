@@ -1,0 +1,27 @@
+<p>mark-hours-off works!</p>
+<div>
+  <div>
+    <button (click)="getTimings()">Test</button>
+    <div class="form-group">
+      <label for="hoursOffStartTime">Start time</label>
+      <input
+        type="datetime-local"
+        [(ngModel)]="userCredentialModel.hoursOffStartTime"
+        name="hoursOffStartTime"
+        class="input-group date"
+        max="2022-07-28"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="hoursOffEndTime">End time</label>
+      <input
+        type="datetime-local"
+        [(ngModel)]="userCredentialModel.hoursOffEndTime"
+        name="hoursOffEndTime"
+        class="input-group date"
+        max="2022-07-28"
+      />
+    </div>
+  </div>
+</div>

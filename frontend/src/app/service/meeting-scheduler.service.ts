@@ -77,4 +77,7 @@ export class MeetingSchedulerService {
   public updateMeeting(data:any){
     return this._http.put("http://localhost:1337/meetings/" + this.meetingId,data)
   }
+  public deleteMeetingById(id:string){
+    return this._http.delete("http://localhost:1337/meetings/" + id)
+  }
 }

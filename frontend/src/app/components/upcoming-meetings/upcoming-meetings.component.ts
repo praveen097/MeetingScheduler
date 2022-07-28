@@ -33,5 +33,11 @@ export class UpcomingMeetingsComponent implements OnInit {
     this._meetingSchedulerService.setMeetingId(id);
     this._route.navigate(['editMeeting'])
   }
+  public deleteMeeting(id:any){
+    this._meetingSchedulerService.deleteMeetingById(id).subscribe((result) => {
+      console.log(result);
+      this._route.navigate(['dashboard'])
+    })
+  }
 
 }

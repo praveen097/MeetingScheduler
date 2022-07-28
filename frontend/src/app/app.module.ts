@@ -15,6 +15,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { EditMeetingComponent } from './components/edit-meeting/edit-meeting.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MarkHoursOffComponent } from './components/mark-hours-off/mark-hours-off.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ScheduleMeetingComponent,
     UpcomingMeetingsComponent,
     EditProfileComponent,
-    EditMeetingComponent
+    EditMeetingComponent,
+    MarkHoursOffComponent
   ],
   imports: [
     BrowserModule,
