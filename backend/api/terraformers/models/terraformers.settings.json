@@ -12,16 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string"
+    "fullName": {
+      "type": "string",
+      "required": true
     },
     "email": {
       "type": "email",
-      "required": true,
-      "unique": false
-    },
-    "password": {
-      "type": "password",
       "required": true
     },
     "dateOfBirth": {
@@ -30,8 +26,11 @@
     },
     "mobile": {
       "type": "biginteger",
-      "required": true,
-      "unique": false
+      "required": true
+    },
+    "password": {
+      "type": "string",
+      "required": true
     }
   }
 }

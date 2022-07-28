@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "meetings",
+  "info": {
+    "name": "Meetings",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "agenda": {
+      "type": "string",
+      "required": true
+    },
+    "startTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "endTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "guestName": {
+      "type": "string",
+      "required": true
+    },
+    "organizer": {
+      "type": "string",
+      "required": true
+    },
+    "organizerId": {
+      "type": "string",
+      "required": true
+    },
+    "guestId": {
+      "type": "string"
+    }
+  }
+}
