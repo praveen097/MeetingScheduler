@@ -12,34 +12,27 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "tId": {
-      "type": "uid",
+    "fullName": {
+      "type": "string",
       "required": true
-    },
-    "name": {
-      "type": "string"
     },
     "email": {
       "type": "email",
-      "required": true,
-      "unique": false
-    },
-    "password": {
-      "type": "password",
-      "required": true
-    },
-    "dateOfBirth": {
-      "type": "date",
       "required": true
     },
     "mobile": {
       "type": "biginteger",
-      "required": true,
-      "unique": false
+      "required": true
     },
-    "credential": {
-      "model": "credentials",
-      "via": "terraformer"
+    "password": {
+      "type": "string",
+      "required": true
+    },
+    "hoursOffStartTime": {
+      "type": "datetime"
+    },
+    "hoursOffEndTime": {
+      "type": "datetime"
     }
   }
 }

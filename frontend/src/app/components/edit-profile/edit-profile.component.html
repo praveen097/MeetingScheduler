@@ -1,10 +1,11 @@
-<div class="loginHolderMain">
-  <div class="loginHolder">
-    <h1 style="text-align: center">Sign Up Here</h1>
+<app-header></app-header>
+<div class="editProfileMain">
+  <div class="editProfileHolder">
+    <h1 style="text-align: center">Profile</h1>
     <hr />
     <form
       #loginForm="ngForm"
-      (ngSubmit)="registerTerraformers()"
+      (ngSubmit)="updateTerraformers()"
       autocomplete="off"
     >
       <div class="form-group">
@@ -16,7 +17,7 @@
           name="fullName"
           #fullName="ngModel"
           [class.is-invalid]="fullName.invalid && fullName.touched"
-          pattern="^[a-zA-Z ]{3,15}$"
+          pattern="^[a-zA-Z ]{3,30}$"
           placeholder="Full Name"
         />
         <div *ngIf="fullName.errors && (fullName.invalid || fullName.touched)">
@@ -34,6 +35,7 @@
 
       <div class="form-group">
         <input
+          disabled="true"
           required
           [(ngModel)]="registerModel.email"
           type="email"
@@ -120,9 +122,9 @@
       <hr />
       <br />
       <div style="text-align: center">
-        <button type="submit" class="btn btn-primary">Sign Up</button>&nbsp;
+        <button type="submit" class="btn btn-primary">Update</button>&nbsp;
         <button type="reset" class="btn btn-secondary">Reset</button>&nbsp;
-        <a routerLink="">Already Member? Sign In</a>
+        <button routerLink="/dashboard" class="btn btn-danger">Cancel</button>
       </div>
     </form>
   </div>

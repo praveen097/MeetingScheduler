@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/credentials",
-      "handler": "credentials.find",
+      "path": "/meetings",
+      "handler": "meetings.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/credentials/count",
-      "handler": "credentials.count",
+      "path": "/meetings/count",
+      "handler": "meetings.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/credentials/:id",
-      "handler": "credentials.findOne",
+      "path": "/meetings/:id",
+      "handler": "meetings.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/credentials",
-      "handler": "credentials.create",
+      "path": "/meetings",
+      "handler": "meetings.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/credentials/:id",
-      "handler": "credentials.update",
+      "path": "/meetings/:id",
+      "handler": "meetings.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/credentials/:id",
-      "handler": "credentials.delete",
+      "path": "/meetings/:id",
+      "handler": "meetings.delete",
       "config": {
         "policies": []
       }
