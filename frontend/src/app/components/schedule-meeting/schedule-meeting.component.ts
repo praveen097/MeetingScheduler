@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { Meeting } from 'src/app/models/meeting';
 import { MeetingSchedulerService } from 'src/app/service/meeting-scheduler.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-schedule-meeting',
@@ -64,7 +65,11 @@ export class ScheduleMeetingComponent implements OnInit {
       .scheduleMeeting(this.userCredentialModel)
       .subscribe((result) => {
         if (result != null) {
-          alert('Meeting scheduled successfully!');
+          Swal.fire({
+            title:'Meeting scheduled successfully!',
+            confirmButtonColor:'#D8CE17',
+            icon:'success'
+          })
           this._route.navigate(['dashboard']);
         }
       });

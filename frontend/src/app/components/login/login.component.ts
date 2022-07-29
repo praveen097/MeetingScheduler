@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserCredentials } from 'src/app/models/user-credentials';
 import { MeetingSchedulerService } from 'src/app/service/meeting-scheduler.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -29,12 +30,25 @@ export class LoginComponent implements OnInit {
         this._meetingSchedulerService.validCredentials(this.userCredentialModel)
       ) {
         this._meetingSchedulerService.setLogInStatus(true);
+        Swal.fire({
+          title:'Login successful',
+          confirmButtonColor:'#D8CE17',
+          icon:'success'
+        })
         this._route.navigate(['dashboard']);
       } else {
-        alert('User name or password is wrong');
+        Swal.fire({
+          title:'username/password are wrong',
+          confirmButtonColor:'#D8CE17',
+          icon:'error'
+        })
       }
     } else {
-      confirm('not valid captcha');
+      Swal.fire({
+        title:'Not a valid captcha',
+        confirmButtonColor:'#D8CE17',
+        icon:'error'
+      })
       this.captcha = '';
     }
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Register } from 'src/app/models/register';
 import { MeetingSchedulerService } from 'src/app/service/meeting-scheduler.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -31,11 +32,19 @@ export class RegisterComponent implements OnInit {
       if (
         this._meetingSchedulerService.isUserExists(this.registerModel.email)
       ) {
-        alert('User already exists with this email, please sign in');
+        Swal.fire({
+          title:'User exists with this email!',
+          confirmButtonColor:'#D8CE17',
+          icon:'warning'
+        })
         this._route.navigate(['']);
       } else {
         if (this.confirmPassword != this.registerModel.password) {
-          alert('Passwords are not same');
+          Swal.fire({
+            title:'Password & confirm password should be same!',
+            confirmButtonColor:'#D8CE17',
+            icon:'error'
+          })
         } else {
           this._meetingSchedulerService
             .registerTerraformers(this.registerModel)
@@ -49,7 +58,11 @@ export class RegisterComponent implements OnInit {
         }
       }
     } else {
-      alert('All fields are mandatory!');
+      Swal.fire({
+        title:'All fields are mandatory!',
+        confirmButtonColor:'#D8CE17',
+        icon:'warning'
+      })
     }
   }
 }

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Register } from 'src/app/models/register';
 import { MeetingSchedulerService } from 'src/app/service/meeting-scheduler.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mark-hours-off',
@@ -35,11 +36,19 @@ export class MarkHoursOffComponent implements OnInit {
       this._meetingSchedulerService
         .updateTerraformers(this.userCredentialModel)
         .subscribe((result) => {
-          alert('Marked successfully');
+          Swal.fire({
+            title:'Marked successfully!',
+            confirmButtonColor:'#D8CE17',
+            icon:'success'
+          })
           this._route.navigate(['/dashboard']);
         });
     } else {
-      alert('Need to mark both start time and end time');
+      Swal.fire({
+        title:'Need to mark both start time & end time!',
+        confirmButtonColor:'#D8CE17',
+        icon:'success'
+      })
     }
   }
 }
