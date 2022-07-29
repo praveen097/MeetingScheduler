@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     // }
   }
   public toRegister(): void {
-    this._route.navigate(['/signup']);
+    this._route.navigate(['signup']);
   }
   public generateCaptcha(): void {
     this.captcha = '';

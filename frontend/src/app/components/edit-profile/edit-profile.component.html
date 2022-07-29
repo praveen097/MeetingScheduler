@@ -1,20 +1,24 @@
-<p>edit-profile works!</p>
-<p>register works!</p>
+<app-header></app-header>
 <div class="loginHolderMain">
   <div class="loginHolder">
-    <form #loginForm="ngForm" (ngSubmit)="updateTerraformers()" autocomplete="off">
+    <h1 style="text-align: center">Profile</h1>
+    <hr />
+    <form
+      #loginForm="ngForm"
+      (ngSubmit)="updateTerraformers()"
+      autocomplete="off"
+    >
       <div class="form-group">
-        <label for="fullName">Full name</label>
         <input
           required
-          [(ngModel)]="userCredentialModel.fullName"
+          [(ngModel)]="registerModel.fullName"
           type="text"
           class="form-control"
           name="fullName"
           #fullName="ngModel"
           [class.is-invalid]="fullName.invalid && fullName.touched"
           pattern="^[a-zA-Z]{3,15}$"
-          placeholder="Enter full name"
+          placeholder="Full Name"
         />
         <div *ngIf="fullName.errors && (fullName.invalid || fullName.touched)">
           <small
@@ -27,20 +31,20 @@
           >
         </div>
       </div>
+      <br />
 
       <div class="form-group">
-        <label for="email">Email</label>
         <input
-        [disabled]="true"
+          disabled="true"
           required
-          [(ngModel)]="userCredentialModel.email"
+          [(ngModel)]="registerModel.email"
           type="email"
           class="form-control"
           name="email"
           #email="ngModel"
           [class.is-invalid]="email.invalid && email.touched"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-          placeholder="Enter email"
+          placeholder="Email"
         />
         <div *ngIf="email.errors && (email.invalid || email.touched)">
           <small
@@ -53,14 +57,13 @@
           >
         </div>
       </div>
-
+      <br />
 
       <div class="form-group">
-        <label for="password">Password</label>
         <input
           required
           #password="ngModel"
-          [(ngModel)]="userCredentialModel.password"
+          [(ngModel)]="registerModel.password"
           [class.is-invalid]="password.invalid && password.touched"
           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{3,12}$"
           type="password"
@@ -80,24 +83,30 @@
           >
         </div>
       </div>
+      <br />
 
       <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" class="form-control">
+        <input
+          type="password"
+          placeholder="Confirm password"
+          name="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          class="form-control"
+        />
       </div>
+      <br />
 
       <div class="form-group">
-        <label for="mobile">Mobile</label>
         <input
           required
-          [(ngModel)]="userCredentialModel.mobile"
+          [(ngModel)]="registerModel.mobile"
           type="tel"
           class="form-control"
           name="mobile"
           #mobile="ngModel"
           [class.is-invalid]="mobile.invalid && mobile.touched"
           pattern="[6789][0-9]{9}"
-          placeholder="Enter mobile number"
+          placeholder="Mobile"
         />
         <div *ngIf="mobile.errors && (mobile.invalid || mobile.touched)">
           <small
@@ -110,19 +119,13 @@
           >
         </div>
       </div>
-      
-
-      <div class="form-group" >
-        <label for="paymentDueDate">Date of Birth</label>
-        <input type="date" [(ngModel)]="userCredentialModel.dateOfBirth" name="dateOfBirth" class="input-group date" max="2022-07-28">
+      <hr />
+      <br />
+      <div style="text-align: center">
+        <button type="submit" class="btn btn-primary">Update</button>&nbsp;
+        <button type="reset" class="btn btn-secondary">Reset</button>&nbsp;
+        <button routerLink="/dashboard" class="btn btn-danger">Cancel</button>
       </div>
-
-      <br />
-
-      <br />
-      <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
-      <button type="reset" class="btn btn-primary">Reset</button>&nbsp;
-      <button type="button" (click)="toLogIn()" class="btn btn-primary">Log in</button>&nbsp;
     </form>
   </div>
 </div>

@@ -14,6 +14,7 @@ export class MeetingSchedulerService {
   public guestDetails:any;
   public meetings:any;
   public meetingId:string = ''
+  public singleTerraformer:any;
 
   constructor(private _http: HttpClient) {}
   public setLogInStatus(response: boolean) {
@@ -88,5 +89,31 @@ export class MeetingSchedulerService {
   }
   public deleteMeetingById(id:string){
     return this._http.delete("http://localhost:1337/meetings/" + id)
+  }
+  public checkUser(email:any,mobile:any){
+    for (let i = 0; i < this.terrraformers.length; i++) {
+      const element = this.terrraformers[i];
+      if (email == element.email && mobile == element.mobile) {
+        this.organizerId = element.id; 
+        this.getTerraformersById(this.organizerId).subscribe((result) => {
+          this.singleTerraformer = result;
+          
+        })       
+        return true;
+      }
+    }
+    return false;
+  }
+  public updatePassword(password:any){
+    this.singleTerraformer.password = password;
+    this.updateTerraformers(this.singleTerraformer).subscribe((result) =>{
+      
+      if(result != null){
+        return true;
+      }else{
+        return false;
+      }
+    });
+    return true;
   }
 }

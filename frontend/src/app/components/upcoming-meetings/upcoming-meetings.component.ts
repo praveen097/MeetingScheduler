@@ -21,7 +21,6 @@ export class UpcomingMeetingsComponent implements OnInit {
       this.meetings = result;
       for (let i = 0; i < this.meetings.length; i++) {
         const element = this.meetings[i];
-        console.log(element.timings);
         function formatMyDate(value: string | number | Date, locale = 'en-GB') {
           return new Date(value).toLocaleString()
       }
@@ -39,10 +38,11 @@ export class UpcomingMeetingsComponent implements OnInit {
     this._route.navigate(['editMeeting'])
   }
   public deleteMeeting(id:any){
-    this._meetingSchedulerService.deleteMeetingById(id).subscribe((result) => {
-      console.log(result);
-      this._route.navigate(['dashboard'])
-    })
+    if(confirm("Are you sure you want to delete this meeting?")){
+      this._meetingSchedulerService.deleteMeetingById(id).subscribe((result) => {
+        this._route.navigate(['dashboard'])
+      })
+    }
   }
 
 }

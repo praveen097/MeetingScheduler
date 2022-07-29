@@ -9,7 +9,7 @@ import { MeetingSchedulerService } from 'src/app/service/meeting-scheduler.servi
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent implements OnInit {
-  userCredentialModel = new Register();
+  registerModel = new Register();
   oneTimePassword: number = 0;
   captcha: string = '';
   array: any = [];
@@ -24,17 +24,17 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this._meetingSchedulerService.organizerId;
     this._meetingSchedulerService.getTerraformersById(this.userId).subscribe((result) =>{
-      this.userCredentialModel = result;
+      this.registerModel = result;
     })
-    this.userCredentialModel.password = '';
+    this.registerModel.password = '';
     
   }
 
   public updateTerraformers(){
-    if(this.confirmPassword != this.userCredentialModel.password){
-      alert("Passwords are not same")
+    if(this.confirmPassword != this.registerModel.password){
+      alert("Please confirm password to update")
     }else{
-      this._meetingSchedulerService.updateTerraformers(this.userCredentialModel).subscribe((result) =>{
+      this._meetingSchedulerService.updateTerraformers(this.registerModel).subscribe((result) =>{
       })
     }
     
@@ -42,7 +42,7 @@ export class EditProfileComponent implements OnInit {
 
   public registerTerraformers(): void {
     this._meetingSchedulerService
-      .registerTerraformers(this.userCredentialModel)
+      .registerTerraformers(this.registerModel)
       .subscribe((result) => {
         this.array = JSON.parse(JSON.stringify(result));
         if (this.array['status'] == 'success') {

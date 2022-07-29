@@ -1,3 +1,5 @@
+import { Time } from '@angular/common';
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Register } from 'src/app/models/register';
@@ -21,12 +23,15 @@ export class MarkHoursOffComponent implements OnInit {
     })
   }
   public getTimings(){
-    console.log(this.userCredentialModel);
-    console.log(this.userCredentialModel.hoursOffStartTime);
-    console.log(this.userCredentialModel.hoursOffEndTime);
-    this._meetingSchedulerService.updateTerraformers(this.userCredentialModel).subscribe((result) =>{
-      console.log(result);
-    })
+    if(this.userCredentialModel.hoursOffStartTime != null && this.userCredentialModel.hoursOffEndTime != null){
+      this._meetingSchedulerService.updateTerraformers(this.userCredentialModel).subscribe((result) =>{
+        alert("Marked successfully");
+        this._route.navigate(['/dashboard'])
+      })
+    }else {
+      alert("Need to mark both start time and end time")
+    }
+    
   }
 
 }
