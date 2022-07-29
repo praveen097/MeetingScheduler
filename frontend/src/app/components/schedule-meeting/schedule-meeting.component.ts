@@ -61,10 +61,14 @@ export class ScheduleMeetingComponent implements OnInit {
     }
     this._meetingSchedulerService
       .scheduleMeeting(this.userCredentialModel)
-      .subscribe((result) => {});
+      .subscribe((result) => {
+        if(result != null){
+          this._route.navigate(['dashboard'])
+        }
+      });
   }
 
   public toLogIn(): void {
-    this._route.navigate(['']);
+    this._route.navigate(['dashboard']);
   }
 }

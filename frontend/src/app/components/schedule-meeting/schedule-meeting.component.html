@@ -1,6 +1,6 @@
-<p>schedule-meeting works!</p>
 <div class="loginHolderMain">
   <div class="loginHolder">
+    <h1 style="text-align:center;">Schedule Meeting</h1><hr>
     <form #loginForm="ngForm" (ngSubmit)="scheduleMeeting()" autocomplete="off">
       <div class="form-group">
         <label for="title">Title</label>
@@ -12,7 +12,7 @@
           name="title"
           #title="ngModel"
           [class.is-invalid]="title.invalid && title.touched"
-          placeholder="Enter full name"
+          placeholder="Title"
         />
         <div *ngIf="title.errors && (title.invalid || title.touched)">
           <small
@@ -21,7 +21,7 @@
             >Please enter title</small
           >
         </div>
-      </div>
+      </div><br>
 
       <div class="form-group">
         <label for="agenda">Agenda</label>
@@ -42,9 +42,9 @@
             >Please enter agenda</small
           >
         </div>
-      </div>
+      </div><br>
       <div class="form-group">
-        <label for="startTime">Date & Time</label>
+        <label for="startTime">When</label>
         <input
         (change)="checkUsersAvailable()"
           type="datetime-local"
@@ -53,9 +53,9 @@
           class="input-group date"
           max="2022-07-28"
         />
-      </div>
+      </div> <br>
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="userCredentialModel.timings != null">
         <label for="guestName">Guest Name : </label>
         <select
           [(ngModel)]="userCredentialModel.guestName"
@@ -75,10 +75,9 @@
       <br />
 
       <br />
-      <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+      <button type="submit" class="btn btn-primary">Schedule Meeting</button>&nbsp;
       <button type="reset" class="btn btn-primary">Reset</button>&nbsp;
-      <button type="button" (click)="toLogIn()" class="btn btn-primary">
-        Log in</button
+      <button type="button" (click)="toLogIn()" class="btn btn-primary">Menu</button
       >&nbsp;
     </form>
   </div>

@@ -7,11 +7,10 @@
   width: 500px !important;
 }
 form {
-  background-color: blanchedalmond;
   margin: 20px;
   padding: 30px;
   border-radius: 20px;
 }
-del {
-  color: red;
+input[type=datetime-local] {
+  height: 40px;
 }

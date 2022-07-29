@@ -54,6 +54,15 @@ export class MeetingSchedulerService {
     }
     return false;
   }
+  public isUserExists(data:any){    
+    for (let i = 0; i < this.terrraformers.length; i++) {
+      const element = this.terrraformers[i];
+      if (data == element.email ) {
+        return true;
+      }
+    }
+    return false;
+  }
   public setMeetings(){
     this.getAllMeetings().subscribe((result) =>{      
       this.meetings = result;

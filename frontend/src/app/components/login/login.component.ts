@@ -23,39 +23,22 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.generateCaptcha();
-    // this._meetingSchedulerService.getAllTerraformers().subscribe((result) => {
-    //   console.log(result);
-    // });
     this._meetingSchedulerService.setTerraformers();
   }
   public validateUser(): void {
     // if (this.oneTimePassword == parseInt(this.captcha)) {
-    //   this._meetingSchedulerService
-    //     .validateUser(this.userCredentialModel)
-    //     .subscribe((result) => {
-    //       console.log(result);
-    //       this.array = JSON.parse(JSON.stringify(result));
-    //       if (this.array['status'] == 'success') {
-    //         localStorage.removeItem('customerId');
-    //         var id = this.array['customerid'];
-    //         localStorage.setItem('customerId', id);
-    //         this.customerId = localStorage.getItem('customerId');
-    //         this._meetingSchedulerService.setLogInStatus(true);
-    //         this._route.navigate(['billPaymentRegistration']);
-    //       } else {
-    //         console.log(result);
-    //       }
-    //     });
+    if (
+      this._meetingSchedulerService.validCredentials(this.userCredentialModel)
+    ) {
+      this._meetingSchedulerService.setLogInStatus(true);
+      this._route.navigate(['dashboard']);
+    } else {
+      alert('User name or password is wrong');
+    }
     // } else {
     //   confirm('not valid otp');
     //   this.captcha = '';
     // }
-    if(this._meetingSchedulerService.validCredentials(this.userCredentialModel)){
-      this._meetingSchedulerService.setLogInStatus(true);
-      this._route.navigate(['dashboard'])
-    }else{
-      alert("User name or password is wrong");
-    }
   }
   public toRegister(): void {
     this._route.navigate(['/signup']);

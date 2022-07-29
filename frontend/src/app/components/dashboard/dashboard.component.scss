@@ -1,0 +1,14 @@
+.cardHolder {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.card {
+    height: 300px;
+    width: 250px;
+    margin: 20px;
+    padding: 10px;
+    box-shadow: 5px 10px 8px #888888;
+    cursor: pointer;
+}

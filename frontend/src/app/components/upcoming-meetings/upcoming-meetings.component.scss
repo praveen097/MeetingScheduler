@@ -1,19 +1,44 @@
-.titleHolder{
-    width: 90%;
-    border: 1px solid red;
-}
-.title{
-    float: left;
-}
-
-.organizer{
-    float: right;
-}
-
-.contentHolder{
+.cardHolder{
     align-items: center;
     justify-content: center;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
+.card {
+    width: 80%;
+    margin: 20px;
+    box-shadow: 5px 10px 8px #888888;
+    padding: 10px;
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+}
+.title {
+    float: left;
+    font-size: larger;
+    text-decoration: double;
+}
+.organizer {
+    float: right;
+    font-size: larger;
+    text-decoration: double;
+}
+button {
+    width: fit-content;
+}
+.titleHolder {
+    // background-color: beige;
+    margin: 2px;
+    border-bottom: 2px solid gray;
+}
+.contentHolder {
+    margin: 2px;
+}
+::ng-deep .material-icons {
+    font-size: 30px;
+   margin-bottom: -10px;
+  }
+  ::ng-deep .mat-icon {
+    width: max-content !important;
+    height: max-content !important;
+  }

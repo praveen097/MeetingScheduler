@@ -1,21 +1,24 @@
-<p>login works!</p>
 <div class="loginHolderMain">
-    <div class="loginHolder">
+  <div class="loginHolder">
+    <div class="formHolder">
+      <h1 style="text-align: center">Login to Your Account</h1>
+      <hr />
       <form #loginForm="ngForm" (ngSubmit)="validateUser()">
         <div class="form-group">
-          <label for="username">Email address</label>
           <input
             required
             [(ngModel)]="userCredentialModel.userName"
-            type="text"
+            type="email"
             class="form-control"
             name="userName"
             #userName="ngModel"
             [class.is-invalid]="userName.invalid && userName.touched"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-            placeholder="Enter username"
+            placeholder="Email"
           />
-          <div *ngIf="userName.errors && (userName.invalid || userName.touched)">
+          <div
+            *ngIf="userName.errors && (userName.invalid || userName.touched)"
+          >
             <small
               class="text-danger"
               *ngIf="userName.errors['required'] && userName.touched"
@@ -26,8 +29,8 @@
             >
           </div>
         </div>
+        <br />
         <div class="form-group">
-          <label for="password">Password</label>
           <input
             required
             #password="ngModel"
@@ -40,7 +43,9 @@
             id="exampleInputPassword1"
             placeholder="Password"
           />
-          <div *ngIf="password.errors && (password.invalid || password.touched)">
+          <div
+            *ngIf="password.errors && (password.invalid || password.touched)"
+          >
             <small
               class="text-danger"
               *ngIf="password.errors['required'] && password.touched"
@@ -53,24 +58,39 @@
         </div>
         <br />
         <div class="form-group">
-          <label for="oneTimePassword">CAPTCHA</label>
           <input
             required
             name="captcha"
             type="text"
             class="form-control"
             [(ngModel)]="captcha"
-             placeholder="Enter CAPTCHA"
+            placeholder="CAPTCHA"
           />
           <h2>
             <del>{{ oneTimePassword }}</del
             ><mat-icon (click)="generateCaptcha()">refresh</mat-icon>
           </h2>
         </div>
-        <br />
-        <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
-        <button type="reset" class="btn btn-primary">Reset</button>&nbsp;
-        <button type="button" (click)="toRegister()" class="btn btn-primary">Sign up</button>&nbsp;
+        <hr />
+        <button type="submit" class="btn btn-primary">Sign In</button
+        >&nbsp;&nbsp;&nbsp;
+        <button type="reset" class="btn btn-secondary">Reset</button
+        >&nbsp;&nbsp;
+        <a routerLink="forgotPassword">Forgot password?</a>
       </form>
     </div>
   </div>
+  <div class="signUp">
+    <div class="imageHolder">
+      <p class="signUpText">New Here ?</p>
+      <br />
+      <p class="signUpSubText">
+        Sign up and discover a great amount of opportunities
+      </p>
+      <br />
+      <button type="button" (click)="toRegister()" class="signUpButton">
+        Sign Up
+      </button>
+    </div>
+  </div>
+</div>

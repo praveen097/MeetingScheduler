@@ -1,14 +1,28 @@
-<p>upcoming-meetings works!</p>
 <div>
-    <h4 *ngFor="let meeting of upcomingMeetings">
-        <div class="contentHolder">
-            <div class="titleHolder">
-                <p class="title">{{meeting.title}}</p>
-                <p class="organizer">{{meeting.organizer}}</p>
-                {{meeting.agenda}}  {{meeting.guestName}} {{meeting.timings}} {{meeting.id}}
-                <mat-icon (click) = "editMeeting(meeting.id)">edit</mat-icon>
-                <mat-icon (click) = "deleteMeeting(meeting.id)">delete</mat-icon>
+    <h2 style="text-align: center;">Appointments</h2><hr>
+    <div *ngIf="upcomingMeetings.length == 0;else elseBlock">
+        <h2 style="text-align: center;">No Appointments scheduled</h2>
+    </div> 
+    <ng-template #elseBlock>
+        <div class="cardHolder" *ngFor="let meeting of upcomingMeetings">
+            <div class="card">
+              <div class="titleHolder">
+                <p class="title">{{ meeting.title }}</p>
+                <p class="organizer"><mat-icon>person</mat-icon>:{{ meeting.organizer }}</p>
+              </div>
+              <div class="contentHolder">
+                <p><mat-icon>access_time</mat-icon> {{ meeting.timings }}</p>
+                <p><mat-icon>person_add</mat-icon> {{ meeting.guestName }}</p>
+                <p><mat-icon>view_agenda</mat-icon> {{ meeting.agenda }}</p>
+                <hr>
+                <div *ngIf="organizerName == meeting.organizer">
+                  <button type="button" (click)="editMeeting(meeting.id)" class="btn btn-primary">Edit Meeting</button>
+                  &nbsp; &nbsp;
+                  <button type="button" (click)="deleteMeeting(meeting.id)" class="btn btn-danger">Delete</button>
+                </div>
+              </div>
             </div>
         </div>
-    </h4>
+    </ng-template>
+  
 </div>

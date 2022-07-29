@@ -20,10 +20,6 @@
       "type": "email",
       "required": true
     },
-    "dateOfBirth": {
-      "type": "date",
-      "required": true
-    },
     "mobile": {
       "type": "biginteger",
       "required": true
