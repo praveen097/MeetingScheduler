@@ -9,11 +9,9 @@ import { MeetingSchedulerService } from 'src/app/service/meeting-scheduler.servi
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  userCredentialModel = new UserCredentials();
-  oneTimePassword: number = 0;
-  captcha: string = '';
-  array: any = [];
-  count: number = 0;
+  public userCredentialModel = new UserCredentials();
+  public oneTimePassword: number = 0;
+  public captcha: string = '';
   public customerId: any;
 
   constructor(
@@ -26,19 +24,19 @@ export class LoginComponent implements OnInit {
     this._meetingSchedulerService.setTerraformers();
   }
   public validateUser(): void {
-    // if (this.oneTimePassword == parseInt(this.captcha)) {
-    if (
-      this._meetingSchedulerService.validCredentials(this.userCredentialModel)
-    ) {
-      this._meetingSchedulerService.setLogInStatus(true);
-      this._route.navigate(['dashboard']);
+    if (this.oneTimePassword == parseInt(this.captcha)) {
+      if (
+        this._meetingSchedulerService.validCredentials(this.userCredentialModel)
+      ) {
+        this._meetingSchedulerService.setLogInStatus(true);
+        this._route.navigate(['dashboard']);
+      } else {
+        alert('User name or password is wrong');
+      }
     } else {
-      alert('User name or password is wrong');
+      confirm('not valid captcha');
+      this.captcha = '';
     }
-    // } else {
-    //   confirm('not valid otp');
-    //   this.captcha = '';
-    // }
   }
   public toRegister(): void {
     this._route.navigate(['signup']);

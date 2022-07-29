@@ -28,7 +28,7 @@ export class ScheduleMeetingComponent implements OnInit {
       this._meetingSchedulerService.organizerName;
     this.guestDetails = this._meetingSchedulerService.terrraformers;
   }
-  public checkUsersAvailable() {
+  public checkUsersAvailable(): void {
     this.array = [];
     for (let i = 0; i < this.guestDetails.length; i++) {
       const element = this.guestDetails[i];
@@ -37,17 +37,18 @@ export class ScheduleMeetingComponent implements OnInit {
       }
 
       if (
-        (moment(this.userCredentialModel.timings).isAfter(
+        moment(this.userCredentialModel.timings).isAfter(
           element.hoursOffStartTime
         ) &&
-          moment(this.userCredentialModel.timings).isBefore(
-            element.hoursOffEndTime
-          )) ||
-        element.id == this.userCredentialModel.organizerId
+        moment(this.userCredentialModel.timings).isBefore(
+          element.hoursOffEndTime
+        )
       ) {
-
       } else {
-        this.array.push(element);
+        if (element.id == this.userCredentialModel.organizerId) {
+        } else {
+          this.array.push(element);
+        }
       }
     }
   }
@@ -62,13 +63,14 @@ export class ScheduleMeetingComponent implements OnInit {
     this._meetingSchedulerService
       .scheduleMeeting(this.userCredentialModel)
       .subscribe((result) => {
-        if(result != null){
-          this._route.navigate(['dashboard'])
+        if (result != null) {
+          alert('Meeting scheduled successfully!');
+          this._route.navigate(['dashboard']);
         }
       });
   }
 
-  public toLogIn(): void {
+  public toDashboard(): void {
     this._route.navigate(['dashboard']);
   }
 }

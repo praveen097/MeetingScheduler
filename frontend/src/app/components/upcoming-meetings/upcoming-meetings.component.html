@@ -1,5 +1,6 @@
 <app-header></app-header>
 <div>
+  <div style="float: left; margin-left:5px"><button type="button" routerLink="/dashboard" class="btn btn-secondary">Menu</button></div>
     <h2 style="text-align: center;">Appointments</h2><hr>
     <div *ngIf="upcomingMeetings.length == 0;else elseBlock">
         <h2 style="text-align: center;">No Appointments scheduled</h2>

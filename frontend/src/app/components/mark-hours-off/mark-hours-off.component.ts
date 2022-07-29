@@ -8,30 +8,38 @@ import { MeetingSchedulerService } from 'src/app/service/meeting-scheduler.servi
 @Component({
   selector: 'app-mark-hours-off',
   templateUrl: './mark-hours-off.component.html',
-  styleUrls: ['./mark-hours-off.component.scss']
+  styleUrls: ['./mark-hours-off.component.scss'],
 })
 export class MarkHoursOffComponent implements OnInit {
   userCredentialModel = new Register();
-  userId:string = '';
+  userId: string = '';
 
-  constructor(private _meetingSchedulerService:MeetingSchedulerService, private _route:Router) { }
+  constructor(
+    private _meetingSchedulerService: MeetingSchedulerService,
+    private _route: Router
+  ) {}
 
   ngOnInit(): void {
     this.userId = this._meetingSchedulerService.organizerId;
-    this._meetingSchedulerService.getTerraformersById(this.userId).subscribe((result) =>{
-      this.userCredentialModel = result;
-    })
+    this._meetingSchedulerService
+      .getTerraformersById(this.userId)
+      .subscribe((result) => {
+        this.userCredentialModel = result;
+      });
   }
-  public getTimings(){
-    if(this.userCredentialModel.hoursOffStartTime != null && this.userCredentialModel.hoursOffEndTime != null){
-      this._meetingSchedulerService.updateTerraformers(this.userCredentialModel).subscribe((result) =>{
-        alert("Marked successfully");
-        this._route.navigate(['/dashboard'])
-      })
-    }else {
-      alert("Need to mark both start time and end time")
+  public getTimings(): void {
+    if (
+      this.userCredentialModel.hoursOffStartTime != null &&
+      this.userCredentialModel.hoursOffEndTime != null
+    ) {
+      this._meetingSchedulerService
+        .updateTerraformers(this.userCredentialModel)
+        .subscribe((result) => {
+          alert('Marked successfully');
+          this._route.navigate(['/dashboard']);
+        });
+    } else {
+      alert('Need to mark both start time and end time');
     }
-    
   }
-
 }

@@ -1,6 +1,6 @@
 <app-header></app-header>
-<div class="loginHolderMain">
-  <div class="loginHolder">
+<div class="editProfileMain">
+  <div class="editProfileHolder">
     <h1 style="text-align: center">Profile</h1>
     <hr />
     <form
@@ -17,7 +17,7 @@
           name="fullName"
           #fullName="ngModel"
           [class.is-invalid]="fullName.invalid && fullName.touched"
-          pattern="^[a-zA-Z]{3,15}$"
+          pattern="^[a-zA-Z ]{3,30}$"
           placeholder="Full Name"
         />
         <div *ngIf="fullName.errors && (fullName.invalid || fullName.touched)">

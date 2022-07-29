@@ -1,13 +1,12 @@
 <app-header></app-header>
-<p>schedule-meeting works!</p>
-<div class="loginHolderMain">
-  <div class="loginHolder">
+<div class="editMeetingHolderMain">
+  <div class="meetingHolder">
     <form #loginForm="ngForm" (ngSubmit)="updateMeeting()" autocomplete="off">
       <div class="form-group">
         <label for="title">Title</label>
         <input
           required
-          [(ngModel)]="userCredentialModel.title"
+          [(ngModel)]="meetingModel.title"
           type="text"
           class="form-control"
           name="title"
@@ -28,7 +27,7 @@
         <label for="agenda">Agenda</label>
         <input
           required
-          [(ngModel)]="userCredentialModel.agenda"
+          [(ngModel)]="meetingModel.agenda"
           type="text"
           class="form-control"
           name="agenda"
@@ -47,9 +46,9 @@
       <div class="form-group">
         <label for="startTime">Date & Time</label>
         <input
-        (change)="checkUsersAvailable()"
+          (change)="checkUsersAvailable()"
           type="datetime-local"
-          [(ngModel)]="userCredentialModel.timings"
+          [(ngModel)]="meetingModel.timings"
           name="startTime"
           class="input-group date"
           max="2022-07-28"
@@ -59,16 +58,13 @@
       <div class="form-group">
         <label for="guestName">Guest Name : </label>
         <select
-          [(ngModel)]="userCredentialModel.guestName"
+          [(ngModel)]="meetingModel.guestName"
           class="form-select form-select-lg mb-3"
           aria-label=".form-select-lg example"
           name="guestName"
           (change)="getGuestId()"
         >
-          <option
-            *ngFor="let dir of array"
-            [value]="dir.fullName"
-          >
+          <option *ngFor="let dir of array" [value]="dir.fullName">
             {{ dir.fullName }}
           </option>
         </select>
@@ -76,10 +72,9 @@
       <br />
 
       <br />
-      <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
-      <button type="reset" class="btn btn-primary">Reset</button>&nbsp;
-      <button type="button" (click)="toLogIn()" class="btn btn-primary">
-        Log in</button
+      <button type="submit" class="btn btn-primary">update</button>&nbsp;
+      <button type="button" (click)="upComingMeetings()" class="btn btn-danger">
+        cancel</button
       >&nbsp;
     </form>
   </div>

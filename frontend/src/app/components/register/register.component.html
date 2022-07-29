@@ -16,7 +16,7 @@
           name="fullName"
           #fullName="ngModel"
           [class.is-invalid]="fullName.invalid && fullName.touched"
-          pattern="^[a-zA-Z]{3,15}$"
+          pattern="^[a-zA-Z ]{3,15}$"
           placeholder="Full Name"
         />
         <div *ngIf="fullName.errors && (fullName.invalid || fullName.touched)">

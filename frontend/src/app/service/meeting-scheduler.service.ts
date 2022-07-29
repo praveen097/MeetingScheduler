@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Meeting } from '../models/meeting';
+import { Observable } from 'rxjs';
 import { Register } from '../models/register';
 
 @Injectable({
@@ -11,106 +11,109 @@ export class MeetingSchedulerService {
   public terrraformers: any = [];
   public organizerId: string = '';
   public organizerName: string = '';
-  public guestDetails:any;
-  public meetings:any;
-  public meetingId:string = ''
-  public singleTerraformer:any;
+  public guestDetails: any;
+  public meetings: any;
+  public meetingId: string = '';
+  public singleTerraformer: any;
 
   constructor(private _http: HttpClient) {}
   public setLogInStatus(response: boolean) {
     this.loggedIn = response;
   }
-  public validateUser(data: any) {
+  public validateUser(data: any): Observable<Object> {
     return this._http.post('http://localhost:6715/validateUser', data);
   }
-  public registerTerraformers(data: Register) {
+  public registerTerraformers(data: Register): Observable<Object> {
     return this._http.post('http://localhost:1337/terraformers', data);
   }
-  public getTerraformersById(id: string) {
+  public getTerraformersById(id: string): Observable<Object> {
     return this._http.get('http://localhost:1337/terraformers/' + id);
   }
 
-  public getAllTerraformers() {
+  public getAllTerraformers(): Observable<Object> {
     return this._http.get('http://localhost:1337/terraformers');
   }
 
-  public updateTerraformers(data:any){    
-    return this._http.put('http://localhost:1337/terraformers/'+ this.organizerId,data);
+  public updateTerraformers(data: any): Observable<Object> {
+    return this._http.put(
+      'http://localhost:1337/terraformers/' + this.organizerId,
+      data
+    );
   }
-  public setTerraformers() {
+  public setTerraformers(): void {
     this.getAllTerraformers().subscribe((result) => {
       this.terrraformers = result;
     });
   }
 
-  public validCredentials(data: any) {
+  public validCredentials(data: any): boolean {
     for (let i = 0; i < this.terrraformers.length; i++) {
       const element = this.terrraformers[i];
       if (data.userName == element.email && data.password == element.password) {
         this.organizerId = element.id;
         this.organizerName = element.fullName;
-        
+
         return true;
       }
     }
     return false;
   }
-  public isUserExists(data:any){    
+  public isUserExists(data: any): boolean {
     for (let i = 0; i < this.terrraformers.length; i++) {
       const element = this.terrraformers[i];
-      if (data == element.email ) {
+      if (data == element.email) {
         return true;
       }
     }
     return false;
   }
-  public setMeetings(){
-    this.getAllMeetings().subscribe((result) =>{      
+  public setMeetings(): any {
+    this.getAllMeetings().subscribe((result) => {
       this.meetings = result;
-    })
+    });
     return this.meetings;
-    
   }
-  
-  public scheduleMeeting(data:any){
-    return this._http.post("http://localhost:1337/meetings",data)
+
+  public scheduleMeeting(data: any): Observable<Object> {
+    return this._http.post('http://localhost:1337/meetings', data);
   }
-  public getAllMeetings(){
-    return this._http.get("http://localhost:1337/meetings");
+  public getAllMeetings(): Observable<Object> {
+    return this._http.get('http://localhost:1337/meetings');
   }
-  public setMeetingId(id:string){
+  public setMeetingId(id: string): void {
     this.meetingId = id;
   }
-  public getMeetingById(id:string){
-    return this._http.get("http://localhost:1337/meetings/" + id)
+  public getMeetingById(id: string): Observable<Object> {
+    return this._http.get('http://localhost:1337/meetings/' + id);
   }
-  public updateMeeting(data:any){
-    return this._http.put("http://localhost:1337/meetings/" + this.meetingId,data)
+  public updateMeeting(data: any): Observable<Object> {
+    return this._http.put(
+      'http://localhost:1337/meetings/' + this.meetingId,
+      data
+    );
   }
-  public deleteMeetingById(id:string){
-    return this._http.delete("http://localhost:1337/meetings/" + id)
+  public deleteMeetingById(id: string): Observable<Object> {
+    return this._http.delete('http://localhost:1337/meetings/' + id);
   }
-  public checkUser(email:any,mobile:any){
+  public checkUser(email: any, mobile: any): boolean {
     for (let i = 0; i < this.terrraformers.length; i++) {
       const element = this.terrraformers[i];
       if (email == element.email && mobile == element.mobile) {
-        this.organizerId = element.id; 
+        this.organizerId = element.id;
         this.getTerraformersById(this.organizerId).subscribe((result) => {
           this.singleTerraformer = result;
-          
-        })       
+        });
         return true;
       }
     }
     return false;
   }
-  public updatePassword(password:any){
+  public updatePassword(password: any): boolean {
     this.singleTerraformer.password = password;
-    this.updateTerraformers(this.singleTerraformer).subscribe((result) =>{
-      
-      if(result != null){
+    this.updateTerraformers(this.singleTerraformer).subscribe((result) => {
+      if (result != null) {
         return true;
-      }else{
+      } else {
         return false;
       }
     });

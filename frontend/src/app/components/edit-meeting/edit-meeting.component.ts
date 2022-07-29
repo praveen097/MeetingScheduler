@@ -7,15 +7,14 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-edit-meeting',
   templateUrl: './edit-meeting.component.html',
-  styleUrls: ['./edit-meeting.component.scss']
+  styleUrls: ['./edit-meeting.component.scss'],
 })
 export class EditMeetingComponent implements OnInit {
-  userCredentialModel = new Meeting();
-  oneTimePassword: number = 0;
-  captcha: string = '';
-  array: any[] = [];
-  guestDetails:any;
-  meetingId:string = ''
+  public meetingModel = new Meeting();
+  public captcha: string = '';
+  public array: any[] = [];
+  public guestDetails: any;
+  public meetingId: string = '';
 
   constructor(
     private _meetingSchedulerService: MeetingSchedulerService,
@@ -23,76 +22,71 @@ export class EditMeetingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userCredentialModel.organizerId = this._meetingSchedulerService.organizerId;
-    this.userCredentialModel.organizer = this._meetingSchedulerService.organizerName;
-    this.guestDetails = this._meetingSchedulerService.terrraformers; 
+    this.meetingModel.organizerId = this._meetingSchedulerService.organizerId;
+    this.meetingModel.organizer = this._meetingSchedulerService.organizerName;
+    this.guestDetails = this._meetingSchedulerService.terrraformers;
     this.meetingId = this._meetingSchedulerService.meetingId;
-    this._meetingSchedulerService.getMeetingById(this.meetingId).subscribe((result) =>{
-      console.log("getting meeting by id");
-      console.log(result);
-      this.userCredentialModel = result;
-    })
-
+    this._meetingSchedulerService
+      .getMeetingById(this.meetingId)
+      .subscribe((result) => {
+        console.log('getting meeting by id');
+        console.log(result);
+        this.meetingModel = result;
+      });
   }
 
-  
-  public scheduleMeeting():void{
+  public scheduleMeeting(): void {
     this.setGuestId();
-    this._meetingSchedulerService.scheduleMeeting(this.userCredentialModel).subscribe((result) =>{
-      console.log(result);
-    })
+    this._meetingSchedulerService
+      .scheduleMeeting(this.meetingModel)
+      .subscribe((result) => {
+        console.log(result);
+      });
   }
-  public setGuestId(){
+  public setGuestId(): void {
     for (let i = 0; i < this.guestDetails.length; i++) {
       const element = this.guestDetails[i];
-      if(element.fullName == this.userCredentialModel.guestName){
-        this.userCredentialModel.guestId = element.id;
+      if (element.fullName == this.meetingModel.guestName) {
+        this.meetingModel.guestId = element.id;
       }
     }
   }
 
-  public toLogIn(): void {
-    this._route.navigate(['']);
+  public upComingMeetings(): void {
+    this._route.navigate(['upcomingMeetings']);
   }
-  public generateCaptcha(): void {
-    this.captcha = '';
-    this.oneTimePassword = Math.round(Math.random() * 1000000);
-    if (Math.log10(this.oneTimePassword) + 1 < 6) {
-      this.generateCaptcha();
-    }
+
+  public updateMeeting(): void {
+    this._meetingSchedulerService
+      .updateMeeting(this.meetingModel)
+      .subscribe((result) => {
+        if (result != null) {
+          alert('updated meeting successfully!');
+          this._route.navigate(['upcomingMeetings']);
+        }
+      });
   }
-  public updateMeeting(){
-    this._meetingSchedulerService.updateMeeting(this.userCredentialModel).subscribe((result) => {
-      console.log(result);
-    })
-  }
-  public getGuestId() {
+  public getGuestId(): void {
     this.setGuestId();
   }
-  public checkUsersAvailable() {
+  public checkUsersAvailable(): void {
     this.array = [];
     for (let i = 0; i < this.guestDetails.length; i++) {
       const element = this.guestDetails[i];
-      if (element.fullName == this.userCredentialModel.guestName) {
-        this.userCredentialModel.guestId = element.id;
+      if (element.fullName == this.meetingModel.guestName) {
+        this.meetingModel.guestId = element.id;
       }
 
       if (
-        (moment(this.userCredentialModel.timings).isAfter(
-          element.hoursOffStartTime
-        ) &&
-          moment(this.userCredentialModel.timings).isBefore(
+        (moment(this.meetingModel.timings).isAfter(element.hoursOffStartTime) &&
+          moment(this.meetingModel.timings).isBefore(
             element.hoursOffEndTime
           )) ||
-        element.id == this.userCredentialModel.organizerId
+        element.id == this.meetingModel.organizerId
       ) {
-
       } else {
         this.array.push(element);
       }
     }
   }
-
-
-
 }
