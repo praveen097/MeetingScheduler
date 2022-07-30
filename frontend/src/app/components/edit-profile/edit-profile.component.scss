@@ -1,0 +1,20 @@
+.editProfileMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.editProfileHolder {
+  width: 500px !important;
+}
+form {
+  margin: 20px;
+  padding: 30px;
+}
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"] {
+  background-color: #e9f2f8;
+  border-left: 5px solid green;
+  border-radius: 20px 0px 0px 20px;
+}

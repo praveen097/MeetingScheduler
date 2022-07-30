@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="mainHolder">
+  <div class="contentHolder">
+    <div class="form-group">
+      <label for="hoursOffStartTime">Start time</label>
+      <input
+        type="datetime-local"
+        [(ngModel)]="userCredentialModel.hoursOffStartTime"
+        name="hoursOffStartTime"
+        class="input-group date"
+        min="2022-08-02 01:00"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="hoursOffEndTime">End time</label>
+      <input
+        type="datetime-local"
+        [(ngModel)]="userCredentialModel.hoursOffEndTime"
+        name="hoursOffEndTime"
+        class="input-group date"
+        min="2022-08-02 01:00"
+      />
+    </div>
+    <button class="btn btn-success" (click)="getTimings()">Mark Off</button
+    >&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-danger" routerLink="/dashboard">Cancel</button>
+  </div>
+</div>

@@ -1,1 +1,129 @@
-<p>register works!</p>
+<div class="loginHolderMain">
+  <div class="loginHolder">
+    <h1 style="text-align: center">Sign Up Here</h1>
+    <hr />
+    <form
+      #loginForm="ngForm"
+      (ngSubmit)="registerTerraformers()"
+      autocomplete="off"
+    >
+      <div class="form-group">
+        <input
+          required
+          [(ngModel)]="registerModel.fullName"
+          type="text"
+          class="form-control"
+          name="fullName"
+          #fullName="ngModel"
+          [class.is-invalid]="fullName.invalid && fullName.touched"
+          pattern="^[a-zA-Z ]{3,15}$"
+          placeholder="Full Name"
+        />
+        <div *ngIf="fullName.errors && (fullName.invalid || fullName.touched)">
+          <small
+            class="text-danger"
+            *ngIf="fullName.errors['required'] && fullName.touched"
+            >Please enter full name</small
+          >
+          <small class="text-danger" *ngIf="fullName.errors['pattern']"
+            >Please enter valid name</small
+          >
+        </div>
+      </div>
+      <br />
+
+      <div class="form-group">
+        <input
+          required
+          [(ngModel)]="registerModel.email"
+          type="email"
+          class="form-control"
+          name="email"
+          #email="ngModel"
+          [class.is-invalid]="email.invalid && email.touched"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          placeholder="Email"
+        />
+        <div *ngIf="email.errors && (email.invalid || email.touched)">
+          <small
+            class="text-danger"
+            *ngIf="email.errors['required'] && email.touched"
+            >Please enter email</small
+          >
+          <small class="text-danger" *ngIf="email.errors['pattern']"
+            >Please enter valid email</small
+          >
+        </div>
+      </div>
+      <br />
+
+      <div class="form-group">
+        <input
+          required
+          #password="ngModel"
+          [(ngModel)]="registerModel.password"
+          [class.is-invalid]="password.invalid && password.touched"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{3,12}$"
+          type="password"
+          name="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Password"
+        />
+        <div *ngIf="password.errors && (password.invalid || password.touched)">
+          <small
+            class="text-danger"
+            *ngIf="password.errors['required'] && password.touched"
+            >Please enter password</small
+          >
+          <small class="text-danger" *ngIf="password.errors['pattern']"
+            >Please enter valid password</small
+          >
+        </div>
+      </div>
+      <br />
+
+      <div class="form-group">
+        <input
+          type="password"
+          placeholder="Confirm password"
+          name="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          class="form-control"
+        />
+      </div>
+      <br />
+
+      <div class="form-group">
+        <input
+          required
+          [(ngModel)]="registerModel.mobile"
+          type="tel"
+          class="form-control"
+          name="mobile"
+          #mobile="ngModel"
+          [class.is-invalid]="mobile.invalid && mobile.touched"
+          pattern="[6789][0-9]{9}"
+          placeholder="Mobile"
+        />
+        <div *ngIf="mobile.errors && (mobile.invalid || mobile.touched)">
+          <small
+            class="text-danger"
+            *ngIf="mobile.errors['required'] && mobile.touched"
+            >Please enter mobile number</small
+          >
+          <small class="text-danger" *ngIf="mobile.errors['pattern']"
+            >Please enter valid mobile number</small
+          >
+        </div>
+      </div>
+      <hr />
+      <br />
+      <div style="text-align: center">
+        <button type="submit" class="btn btn-primary">Sign Up</button>&nbsp;
+        <button type="reset" class="btn btn-secondary">Reset</button>&nbsp;
+        <a routerLink="">Already Member? Sign In</a>
+      </div>
+    </form>
+  </div>
+</div>

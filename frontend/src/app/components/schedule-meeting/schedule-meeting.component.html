@@ -1,0 +1,85 @@
+<app-header></app-header>
+<div class="loginHolderMain">
+  <div class="loginHolder">
+    <h1 style="text-align:center;">Schedule Meeting</h1><hr>
+    <form #loginForm="ngForm" (ngSubmit)="scheduleMeeting()" autocomplete="off">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          required
+          [(ngModel)]="userCredentialModel.title"
+          type="text"
+          class="form-control"
+          name="title"
+          #title="ngModel"
+          [class.is-invalid]="title.invalid && title.touched"
+          placeholder="Title"
+        />
+        <div *ngIf="title.errors && (title.invalid || title.touched)">
+          <small
+            class="text-danger"
+            *ngIf="title.errors['required'] && title.touched"
+            >Please enter title</small
+          >
+        </div>
+      </div><br>
+
+      <div class="form-group">
+        <label for="agenda">Agenda</label>
+        <input
+          required
+          [(ngModel)]="userCredentialModel.agenda"
+          type="text"
+          class="form-control"
+          name="agenda"
+          #agenda="ngModel"
+          [class.is-invalid]="agenda.invalid && agenda.touched"
+          placeholder="Enter email"
+        />
+        <div *ngIf="agenda.errors && (agenda.invalid || agenda.touched)">
+          <small
+            class="text-danger"
+            *ngIf="agenda.errors['required'] && agenda.touched"
+            >Please enter agenda</small
+          >
+        </div>
+      </div><br>
+      <div class="form-group">
+        <label for="startTime">When</label>
+        <input
+        (change)="checkUsersAvailable()"
+          type="datetime-local"
+          [(ngModel)]="userCredentialModel.timings"
+          name="startTime"
+          class="input-group date"
+          min="2022-08-02 01:00"
+        />
+      </div> <br>
+
+      <div class="form-group" *ngIf="userCredentialModel.timings != null">
+        <label for="guestName">Guest Name : </label>
+        <select
+          [(ngModel)]="userCredentialModel.guestName"
+          class="form-select form-select-lg mb-3"
+          aria-label=".form-select-lg example"
+          name="guestName"
+        >
+          <option
+            *ngFor="let dir of array"
+            [value]="dir.fullName"
+          >
+            {{ dir.fullName }}
+          </option>
+        </select>
+      </div>
+
+      <br />
+
+      <br />
+      <button type="submit" class="btn btn-primary">Schedule Meeting</button>&nbsp;
+      <button type="reset" class="btn btn-primary">Reset</button>&nbsp;
+      <button type="button" (click)="toDashboard()" class="btn btn-primary">Menu</button
+      >&nbsp;
+    </form>
+  </div>
+</div>
