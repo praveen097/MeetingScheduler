@@ -2,6 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version v16.16.0 for frontend, [STRAPI](https://strapi.io/) for backend
 
+[Click for Detailed Screenshots of the application](https://drive.google.com/drive/folders/1bmayO289e81MjJ63lSd_8K0KrpYG9b9m?usp=sharing)
 ## Goal of the application
 
 The main goal of this application is to schedule appointments with the other users of the organization. User will be able to schedule meeting with guest only if the 
@@ -116,27 +117,27 @@ We have used [STRAPI](https://strapi.io/) for backend in this application. Strap
   
 
 ## Working of the application
-<img src="Login page"/>
+<img src="https://github.com/praveen097/MeetingScheduler/blob/main/frontend/src/assets/LoginPage.png"/><br>
 
 In this application, user will land into login page. If existing user, then he/she will be able to sign in using their valid credentials, user will also need to 
 fill `CAPTCHA`. Validations are made for username/password/captcha, if they are wrong, then an alert will pop with relevant messsage. If user `forgot password` then they 
 can click on forgot password then they will be redirected to forgot password page. If they are new users, then they can click on `Sign Up` to register themselves as new users.
 
-<div><br><img src="Forgot password page"/><br><div>
+<div><br><img src="https://github.com/praveen097/MeetingScheduler/blob/main/frontend/src/assets/ForgotPassword.png"/><br><br><div>
  
  Here in forgot password page, user can check if there exists a record with their email and mobile number, if there is a record with their credentials then they can 
  reset password else they will be considered as a new user and will be redirected to `Sign Up` page. All the validations are made on password fields and relevant pop ups 
  will be show accordingly.
-<div><br><img src="sign up page"/><br><div>
+<div><br><img src="https://github.com/praveen097/MeetingScheduler/blob/main/frontend/src/assets/RegistrationPage.png"/><br><br><div>
  
 In this `Sign Up` page user will be able to register themselves as a new user, they would need to fill all the fields as they are mandatory. Relevant pop ups will be shown
 for password validations etc., If there exists a record with `Same Email` then they will be considered as a existing user and will be redirected to `Sign In` page.
 
 After successful sign in user will be taken to dashboard
-<div><br><img src="dashboard"/><br><div>
+<div><br><img src="https://github.com/praveen097/MeetingScheduler/blob/main/frontend/src/assets/Dashboard.png"/><br><br><div>
  
 Here in `Dashboard\Menu`, user will get to `Schedule Meeting` , check `Upcoming Appointments`, view `Profile`, marks `Hours Off`.
-<div><br><img src="schedule meeting"/><br><div>
+<div><br><img src="https://github.com/praveen097/MeetingScheduler/blob/main/frontend/src/assets/ScheduleMeeting.png"/><br><br><div>
 
 Here in `Schedule Meeting`, user can provide `Title`,`Agenda`,`Timings`,`Guest`. User won't get to see their `Own Name` in guest list as they cannot schedule meeting
 for themseleves, only guest available at the time of scheduled timings will be show in the `Guest list`. Those guest who marked `Hours Off` at that time won't be show
@@ -146,22 +147,22 @@ in the drop down list.
  Guest will also get to see details of meeting in `Upcoming Appointments`
 ```
 
-<div><br><img src="Upcoming meeting"/><br><div>
+<div><br><img src="https://github.com/praveen097/MeetingScheduler/blob/main/frontend/src/assets/UpcomingMeetings.png"/><br><br><div>
 
 In `Appointments`, user will able to view all the upcoming meetings. If user is the `Organizer` of that meeting, then they can also `Edit/Delete` the meeting. If they
 are `Guest`, then they won't be able to seee Edit/Delete buttons. If user clicks on `Delete`, then confirmation pop up will be shown. If clicked on `Edit Meeting` then 
 they will be taken to edit meeting page.
 
-<div><br><img src="edit meeting"/><br><div>
+<div><br><img src="https://github.com/praveen097/MeetingScheduler/blob/main/frontend/src/assets/EditMeetings.png"/><br><br><div>
 
 In this `Edit Meeting` page, user can edit all the fields. They can change `Title/Agenda/Timing/Guest` as per their needs.
 
-<div><br><img src="edit profile"/><br><div>
+<div><br><img src="https://github.com/praveen097/MeetingScheduler/blob/main/frontend/src/assets/ProfilePage.png"/><br><br><div>
 
 In this `Profile` page, user can edit `Name/Password/Mobile` as per their needs. They won't be allowed to edit `Email` as it is a unique identifier. User would need to 
 `Confirm Password` inorder to make necessary changes.
 
-<div><br><img src="hours off"/><br><div>
+<div><br><img src="https://github.com/praveen097/MeetingScheduler/blob/main/frontend/src/assets/HoursOff.png"/><br><br><div>
 
 In this `Hours Off` page, user marks their hours off according to their needs.
 
