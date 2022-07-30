@@ -2,7 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version v16.16.0 for frontend, [STRAPI](https://strapi.io/) for backend
 
+[Find Live Project Here](https://meeting-scheduler-full.herokuapp.com/)
+
 [Click for Detailed Screenshots of the application](https://drive.google.com/drive/folders/1bmayO289e81MjJ63lSd_8K0KrpYG9b9m?usp=sharing)
+
 ## Goal of the application
 
 The main goal of this application is to schedule appointments with the other users of the organization. User will be able to schedule meeting with guest only if the 
