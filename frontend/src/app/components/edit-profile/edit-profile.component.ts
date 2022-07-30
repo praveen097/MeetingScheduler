@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Register } from 'src/app/models/register';
 import { MeetingSchedulerService } from 'src/app/service/meeting-scheduler.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-profile',
@@ -30,12 +31,20 @@ export class EditProfileComponent implements OnInit {
 
   public updateTerraformers(): void {
     if (this.confirmPassword != this.registerModel.password) {
-      alert('Please confirm password to update');
+      Swal.fire({
+        title: 'Please confirm password to update!',
+        confirmButtonColor: '#D8CE17',
+        icon: 'warning',
+      });
     } else {
       this._meetingSchedulerService
         .updateTerraformers(this.registerModel)
         .subscribe((result) => {
-          alert('Profile updated successfully');
+          Swal.fire({
+            title: 'Profile updated successfully!',
+            confirmButtonColor: '#D8CE17',
+            icon: 'success',
+          });
           this._route.navigate(['dashboard']);
         });
     }

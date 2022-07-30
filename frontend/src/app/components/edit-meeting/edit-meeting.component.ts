@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Meeting } from 'src/app/models/meeting';
 import { MeetingSchedulerService } from 'src/app/service/meeting-scheduler.service';
 import * as moment from 'moment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-meeting',
@@ -61,7 +62,11 @@ export class EditMeetingComponent implements OnInit {
       .updateMeeting(this.meetingModel)
       .subscribe((result) => {
         if (result != null) {
-          alert('updated meeting successfully!');
+          Swal.fire({
+            title:'updated meeting successfully!',
+            confirmButtonColor:'#D8CE17',
+            icon:'success'
+          })
           this._route.navigate(['upcomingMeetings']);
         }
       });

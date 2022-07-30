@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserCredentials } from 'src/app/models/user-credentials';
 import { MeetingSchedulerService } from 'src/app/service/meeting-scheduler.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-forgot-password',
@@ -26,21 +27,41 @@ export class ForgotPasswordComponent implements OnInit {
       this.userExist = true;
       this.email = '';
       this.mobile = '';
-      alert('user exists');
+      Swal.fire({
+        title:'User Exists!',
+        confirmButtonColor:'#D8CE17',
+        icon:'success'
+      })
     } else {
-      alert("User doesn't exist with these credentials, kindly register");
+      Swal.fire({
+        title:'User doesnt exist with these credentials!',
+        confirmButtonColor:'#D8CE17',
+        icon:'error'
+      })
       this._route.navigate(['signup']);
     }
   }
   updatePassword(): void {
     if (this.password != this.confirmPassword) {
-      alert('Passwords needs to same');
+      Swal.fire({
+        title:'Password & confirm password should be same!',
+        confirmButtonColor:'#D8CE17',
+        icon:'error'
+      })
     } else {
       if (this._meetingSchedulerService.updatePassword(this.password)) {
-        alert('password update successfully');
+        Swal.fire({
+          title:'Password updated successfully!',
+          confirmButtonColor:'#D8CE17',
+          icon:'success'
+        })
         this._route.navigate(['']);
       } else {
-        alert('failed to update password');
+        Swal.fire({
+          title:'Failed to update password!',
+          confirmButtonColor:'#D8CE17',
+          icon:'error'
+        })
       }
     }
   }
